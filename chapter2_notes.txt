@@ -1,0 +1,29 @@
+2.2
+
+Two kinds of variables: val / var
+  Val - once initialized, can never be reassigned.
+  Var - like a non-final variable in Java.
+
+Type inference in Scala lets the compiler figure out what type your variable is
+unless you explicitly tell it what you want it to be. Because it's smarter than
+you.
+
+Type Inference :
+  val greeting = "Hello World!"
+Explicit Typing :
+  val greeting: String = "Hello World!"
+
+2.3
+
+Function Definition :
+
+def name_of_function(variable_1: Int, variable_2: String): Int = {}
+
+If you want a function that takes no parameters and returns no interesting value:
+  def greet() = println("Hello, world!")
+Scala will interpret the return type as Unit, which is similar to Java's void.
+
+2.4
+
+i++ and ++i do not work in Scala for incrementing. It must be done as i = i + 1
+or i += 1.
