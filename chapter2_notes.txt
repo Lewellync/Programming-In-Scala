@@ -23,7 +23,19 @@ If you want a function that takes no parameters and returns no interesting value
   def greet() = println("Hello, world!")
 Scala will interpret the return type as Unit, which is similar to Java's void.
 
-2.4
+2.5
 
 i++ and ++i do not work in Scala for incrementing. It must be done as i = i + 1
 or i += 1.
+
+2.6
+
+One of the main characteristics of a functional language is that functions are
+first class constructs. This can be represented by function literals.
+
+Function Literal :
+
+(variable_1: Type, variable_2: Type) => variable_1 + variable_2
+
+List of named parameters in parentheses, a right arrow, and the body of the
+function.
