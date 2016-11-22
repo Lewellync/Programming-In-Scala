@@ -31,3 +31,17 @@ value, you're calling a method on the array class.
   greetStrings(0) = "Hello"
   =
   greetStrings.update(0, "Hello")
+
+3.8
+
+Another big concept in functional programming is that methods should not have
+side effects; a method's only act should be to compute and return a value. We
+know that arrays have mutable content, so we use Lists which are immutable.
+
+If a method is used in operator notation (a + b) the method is invoked on the
+left operand i.e. (a).+(b) means a is calling the + method with b as a parameter.
+This is not the case if a method name ends in a colon it is invoked on the right
+operand instead i.e. 1 :: twoThree = twoThree.::(1).
+
+Note, there is a way to append to a list but it is a costly operation with a
+linear scaling time while prepending takes constant time.

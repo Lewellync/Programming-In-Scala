@@ -22,3 +22,7 @@ explicitGreetStrings.update(2, "world!\n")
 
 for (i <- 0.to(2))
   print(explicitGreetStrings.apply(i))
+
+//Super concise version
+
+val conciseGreetStrings = Array("Hello", ", ", "world\n")
