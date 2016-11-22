@@ -1,0 +1,3 @@
+3.7
+
+Just like Java, you use the 'new' keyword to instantiate an object
