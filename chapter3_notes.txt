@@ -1,3 +1,33 @@
 3.7
 
-Just like Java, you use the 'new' keyword to instantiate an object
+Just like Java, you use the 'new' keyword to instantiate an object.
+
+If you create an array or collection with the 'val' keyword, the variable will
+always point to the same object instance with the parameters it was initialized
+with. However, you can modify the elements contained within, so the array itself
+is mutable.
+
+General rule of Scala, if a method takes only one parameter, you can call it
+without a dot or paren. Example :
+
+  for (0 to 2)
+  =
+  for ((0).to(2))
+
+Operators in Scala are not operators in the traditional sense.
+
+  1 + 2
+  =
+  (1).+(2)
+
+Operators in Scala are just method calls. Most things are method calls. I mean
+like almost everything is a method call. When you access an array or give it a
+value, you're calling a method on the array class.
+
+  greetStrings(i)
+  =
+  greetStrings.apply(i)
+
+  greetStrings(0) = "Hello"
+  =
+  greetStrings.update(0, "Hello")
