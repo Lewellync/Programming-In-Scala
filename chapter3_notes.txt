@@ -1,4 +1,4 @@
-3.7
+3.7 - Array
 
 Just like Java, you use the 'new' keyword to instantiate an object.
 
@@ -32,7 +32,7 @@ value, you're calling a method on the array class.
   =
   greetStrings.update(0, "Hello")
 
-3.8
+3.8 - Lists
 
 Another big concept in functional programming is that methods should not have
 side effects; a method's only act should be to compute and return a value. We
@@ -45,3 +45,15 @@ operand instead i.e. 1 :: twoThree = twoThree.::(1).
 
 Note, there is a way to append to a list but it is a costly operation with a
 linear scaling time while prepending takes constant time.
+
+3.9 - Tuples
+
+Tuples are like lists (immutable) but can contain a variety of objects rather
+than be restricted to one type like an array or Lists. These are useful when
+you want to return multiple objects from a method.
+
+To access an object inside of a tuple, rather than tuple(index) you call
+tuple._index+1. They are one-based rather than zero based like literally all
+other things because Odersky has a hard-on for Haskell (I love you Odersky
+please don't hate me). Also you'll forget this fact later on and have major
+headaches because of it. Good luck!
