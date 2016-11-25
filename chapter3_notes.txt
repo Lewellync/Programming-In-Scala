@@ -71,3 +71,13 @@ traits are extended, whereas in Java interfaces are implemented.
 Maps share this mutability trait class hierarchy with Sets.
 
 3.11 - Recognize Functional Style
+
+Telltale sign of functional code is there aren't vars. Every variable is a val.
+Another sign is that functions have no side effects. In the printargs.scala,
+none of the functions that print to that output stream are purely functional.
+
+If a function isn't returning any interesting value, the only way that function
+can make a difference in the world is through some kind of side effect.
+
+Side effects aren't necessarily evil, but going forward I will prefer vals,
+immutable objects, and methods without side effects.
