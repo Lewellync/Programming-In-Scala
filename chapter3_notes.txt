@@ -57,3 +57,17 @@ tuple._index+1. They are one-based rather than zero based like literally all
 other things because Odersky has a hard-on for Haskell (I love you Odersky
 please don't hate me). Also you'll forget this fact later on and have major
 headaches because of it. Good luck!
+
+3.10 - Sets and Maps
+
+To help enforce programming style choice, Scala makes a point to differentiate
+between mutable and immutable. Arrays are always mutable and lists are always
+immutable. Sets and maps can exert either characteristic and models mutability
+in the class hierarchy (traits, like Java interfaces).
+
+There is a base trait for Set, and two subtraits (mutable / immutable). In Scala
+traits are extended, whereas in Java interfaces are implemented.
+
+Maps share this mutability trait class hierarchy with Sets.
+
+3.11 - Recognize Functional Style
