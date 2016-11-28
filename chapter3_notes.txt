@@ -81,3 +81,5 @@ can make a difference in the world is through some kind of side effect.
 
 Side effects aren't necessarily evil, but going forward I will prefer vals,
 immutable objects, and methods without side effects.
+
+3.12 - Read Lines from a File
