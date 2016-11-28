@@ -83,3 +83,10 @@ Side effects aren't necessarily evil, but going forward I will prefer vals,
 immutable objects, and methods without side effects.
 
 3.12 - Read Lines from a File
+
+Source.fromFile("filename") is how to create a Source object (Scala's file
+object) with which you can manipulate. From the Source object, you can call
+getLines which returns an iterator.
+
+Iterators allow you to traverse whatever they are iterating once before
+being spent.
