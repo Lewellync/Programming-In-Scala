@@ -6,6 +6,6 @@ val lines = Source.fromFile(args(0)).getLines().toList
 //but it works as is so I'm going to leave it
 for((line, count) <- lines.zipWithIndex) {
   if (line.contains(args(1))) {
-    println(s"Line " + count)
+    println("Line " + count)
   }
 }
