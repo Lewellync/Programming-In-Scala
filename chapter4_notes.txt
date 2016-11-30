@@ -1,0 +1,18 @@
+4.1 - Classes, Fields, and Methods
+
+By default, instance variables are public. In Java this would be "public var",
+in Scala it is just "var". Note, instance variables should be private to
+preserve the validity of an object.
+
+A method that returns Unit are executed for their side effects. A side effect
+is defined as mutating state somewhere external to the method or performing an
+I/O action. A method that is only executed for its side effects is known as a
+procedure.
+
+4.2 - Semicolon Inference
+
+Semicolons aren't necessary unless writing multiple lines on one line.
+
+Chaining infix operators should put the operator at the end of the line.
+
+4.3 - Singleton Objects
