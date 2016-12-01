@@ -15,4 +15,36 @@ Semicolons aren't necessary unless writing multiple lines on one line.
 
 Chaining infix operators should put the operator at the end of the line.
 
+Rules of Semicolon Inference
+1. The line in questions ends in a word that would not be legal as the end of a
+statement, such as a period or an infix operator.
+2. The next line begins with a word that cannot start a statement.
+3. The line ends while inside paren or brackets, because these cannot contain
+multiple statements anyway.
+
 4.3 - Singleton Objects
+
+Scala classes can't have static members. They have singleton objects, which are
+different! Because they're called objects and not classes! Singleton objects are
+the home for any static methods that would be contained in a class in Java.
+
+Companion Object - singleton object that shares the same name as a class
+Companion Class - class that has a singleton object
+
+You cannot instantiate a singleton object with new, and they cannot take params.
+A singleton object also doesn't have to share a name with a companion class, it
+can exist as its own standalone object.
+
+4.4 - A Scala Application
+
+Before, everything we did was in scripts. Now we actually need class files to
+run things so we need to compile. Two methods to do this:
+
+  1. Call 'scalac' on the files you want to compile, every time you do it
+  2. Feed 'fsc' daemon the files you want to compile, and then run 'fsc' with no
+     arguments in the future to compile.
+
+4.5 - The App Trait
+
+A nifty little trick to save time (not having to type main) is by making your
+class or object 'extends App'
