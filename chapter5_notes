@@ -1,0 +1,21 @@
+5.1 - Some Basic Types
+
+5.2 - Literals
+
+String exists as the Java version, all other basic types are in scala package.
+Number begins with "Ox" it's base 16, non-zero character is base 10, if it end in
+"L" it's a Long. Scala doesn't support octals. A decimal point followed by an e
+and an exponent are floating points in scientific notation.
+
+Blah blah blah Scala has literals just like Java. Big whoop. Note not caring
+about this section will invariably bite me in the ass.
+
+String literals, these are neat. You know how you have to escape special chars
+like ",', and /? Surround them by triple quotes (""") and Scala recognizes this
+as a raw string, and will not interpret any of the special chars inside. You'll
+probably get weird margins on multiline prints though, so remember to use
+.stripMargin on your raw strings.
+
+Symbols are also a thing, but I don't know much about them. Symbol literals are
+typically used in situations where you would just use an identifier in a
+dynamically typed language (like updating a record in a db).b
