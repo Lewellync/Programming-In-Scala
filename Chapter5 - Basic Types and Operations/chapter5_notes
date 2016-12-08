@@ -40,3 +40,7 @@ is also pre and postfix. Prefix being (-7) and postfix being (7 toLong)
 
 CONVENTION : If a method has a side effect, keep the parens, if it does not
 (like toLowerCase) you can leave them off.
+
+5.11 - Rich Wrappers
+
+In closing, there's some dope ass shit in the Rich wrapper class for data types.
