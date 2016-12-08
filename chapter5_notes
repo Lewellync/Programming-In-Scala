@@ -18,4 +18,25 @@ probably get weird margins on multiline prints though, so remember to use
 
 Symbols are also a thing, but I don't know much about them. Symbol literals are
 typically used in situations where you would just use an identifier in a
-dynamically typed language (like updating a record in a db).b
+dynamically typed language (like updating a record in a db).
+
+5.3 - String Interpolation
+
+Scala offers a handful of string interpolators (things that modify strings)
+
+  s - evaluates embedded expressions, invokes toString on the results and
+      replaces the expression with the result
+  raw - no special characters, everything is printed as is like a string literal
+
+5.4 - Operators are Methods
+
+If something looks like it could be a method in Scala, it is probably a method.
+Even operators like '+' and '-' are just method calls. 1 + 2 is the same as
+1.+(2).  '+' is an infix operator, and any method can be written in operator
+notation.
+
+So far we've seen infix (method sits between the object and parems), but there
+is also pre and postfix. Prefix being (-7) and postfix being (7 toLong)
+
+CONVENTION : If a method has a side effect, keep the parens, if it does not
+(like toLowerCase) you can leave them off.
