@@ -9,4 +9,24 @@ Good place to begin designing a class is thinking how a client will create a new
 instance of that class. The rational object will be immutable, so we want the
 user to specify all the details at object creation.
 
-From here on out, I will be putting more notes in the actual code.
+From here on out, I will be putting more notes in the actual code, because let's
+be honest, these pages aren't particularly useful. Anything that doesn't belong
+in the code I'll try and mark down in here, but it won't be broken down into
+sections anymore.
+
+Immutable objects have pros and cons. Surprise!
+
+Pros :
+
+  - Easier to reason about than mutable objects because they lack changes to
+    what can be complex states.
+  - Passing immutable objects around is totally fine because there is no risk of
+    them being changed.
+  - No way for two threads to corrupt an immutable object since no thread can
+    change its state.
+  - Immutable objects make safe hash table keys.
+
+Cons :
+
+  - Sometimes require a large object be copied, where an update could have been
+    done in its place. This can be a performance bottleneck.
