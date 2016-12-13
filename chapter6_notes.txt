@@ -1,0 +1,12 @@
+6.1 - A Specification for Class Rational
+
+You know what rational numbers are. This chapter explains what rational numbers
+are. This chapter will also teach you about writing libraries for Scala.
+
+6.2 - Construction a Rational
+
+Good place to begin designing a class is thinking how a client will create a new
+instance of that class. The rational object will be immutable, so we want the
+user to specify all the details at object creation.
+
+From here on out, I will be putting more notes in the actual code.
