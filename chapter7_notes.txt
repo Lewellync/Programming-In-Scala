@@ -1,0 +1,9 @@
+Chapter 7 - Built-in Control Structures
+
+Almost all of Scala's built in control structures result in a value. This is in
+accordance with functional programming. You can also view this as the logical
+conclusion of the trend in imperative programming languages; look at ternary
+operators like '?' in Java. It functions like an if statement but returns a
+value, mind blown.
+
+If-Statements
