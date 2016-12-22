@@ -2,7 +2,7 @@
 //This is the bad way to do things, initialize a value and maybe change it
 var filename1 = "default.txt"
 if (!args.isEmpty)
-  filename = args(0)
+  filename1 = args(0)
 
 //What if we used the if statement to return a value?
 //This lets us use a val instead of a var #functional
