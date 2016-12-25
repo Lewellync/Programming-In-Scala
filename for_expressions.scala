@@ -22,3 +22,41 @@ for (i <- 1 to 4)
 // You can use x to y, or x until y
 for (i <- 1 until 4)
   println("Iteration " + i)
+
+// Iterating through integers like this is common in Scala, versus other
+// languages which might use something like this:
+for (i <- 0 to filesHere.length - 1)
+  println(filesHere(i))
+// Rather than this, why not just iterate over the collection directly? The only
+// thing that you might require from this method is the current index, but Scala
+// has the ability to record that (will show later on)
+
+/*
+  For loops can also filter collections to a subset, cause they're magic.
+*/
+
+for (file <- filesHere if file.getName.endsWith(".scala"))
+  println(file)
+
+// We need more filters!
+for {
+  file <- filesHere
+  if file.isFile
+  if file.getName.endsWith(".scala")
+} println(file)
+
+// Nested Iteration - if you add multiple <- claues, you will get loops within
+// the for expression.
+def fileLines(file: java.io.File) =
+  scala.io.Source.fromFile(file).getLines().toList
+
+def grep(pattern: String) = {
+  for {
+    file <- filesHere
+    if file.getName.endsWith(".scala")
+    line <- fileLines(file)
+    if line.trim.matches(pattern)
+  } println(file + ": " + line.trim)
+}
+
+grep(".*gcd.*")
