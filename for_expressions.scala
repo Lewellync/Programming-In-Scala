@@ -51,12 +51,66 @@ def fileLines(file: java.io.File) =
   scala.io.Source.fromFile(file).getLines().toList
 
 def grep(pattern: String) = {
+  for (
+    file <- filesHere
+    if file.getName.endsWith(".scala"); // So here's this awful thing, you need
+                                        // this semi-colon unless you replace
+                                        // the for parens with curly brackets.
+    line <- fileLines(file)
+    if line.trim.matches(pattern)
+  ) println(file + ": " + line.trim)
+}
+
+grep(".*gcd.*")
+
+// Mid-Stream Variable Binding - In the previous grep we call 'String.trim'
+// twice, which is costly. You can assign variables midway by declaring it with
+// 'name = value'. The 'val' keyword is left out, but it is treated as a val.
+
+def grep1(pattern: String) =
   for {
     file <- filesHere
     if file.getName.endsWith(".scala")
     line <- fileLines(file)
-    if line.trim.matches(pattern)
-  } println(file + ": " + line.trim)
-}
+    trimmed = line.trim
+    if trimmed.matches(pattern)
+  } println(file + ": " + trimmed)
 
-grep(".*gcd.*")
+grep1(".*gcd.*")
+
+// Producing a New collection
+// Scala has 'yield' to create a collection from an iteration. Here, we create
+// an array of Java.io.files. The syntax is always for 'clause' yield 'body'.
+// Clause being the various filters and body being the value returned into the
+// yield.
+
+def scalaFiles =
+  for {
+    file <- filesHere
+    if file.getName.endsWith(".scala")
+  } yield file
+
+val exampleFiles = scalaFiles
+println(exampleFiles(0).getName)
+
+// A way to change an Array[File] to Array[Int] with yield. WITH MAGIC.
+
+val forLineLengths =
+  for {
+    file <- filesHere
+    if(file.getName.endsWith(".scala"))
+    line <- fileLines(file)
+    trimmed = line.trim
+    if trimmed.matches(".*for.*")
+  } yield trimmed.length
+
+
+// Get all files inside directories! Nifty.
+
+val testYield =
+  for {
+    file <- filesHere
+    if(file.isDirectory)
+    interiorFiles = new java.io.File(file.toString).listFiles
+    interiorFile <- interiorFiles
+  } yield interiorFile
