@@ -27,14 +27,13 @@ for (i <- 1 until 4)
 // languages which might use something like this:
 for (i <- 0 to filesHere.length - 1)
   println(filesHere(i))
+
 // Rather than this, why not just iterate over the collection directly? The only
 // thing that you might require from this method is the current index, but Scala
 // has the ability to record that (will show later on)
 
-/*
-  For loops can also filter collections to a subset, cause they're magic.
-*/
 
+//  For loops can also filter collections to a subset, cause they're magic.
 for (file <- filesHere if file.getName.endsWith(".scala"))
   println(file)
 
@@ -64,9 +63,8 @@ def grep(pattern: String) = {
 grep(".*gcd.*")
 
 // Mid-Stream Variable Binding - In the previous grep we call 'String.trim'
-// twice, which is costly. You can assign variables midway by declaring it with
+// twice, which is costly. You can assign variables midway by declaring them with
 // 'name = value'. The 'val' keyword is left out, but it is treated as a val.
-
 def grep1(pattern: String) =
   for {
     file <- filesHere
@@ -83,7 +81,6 @@ grep1(".*gcd.*")
 // an array of Java.io.files. The syntax is always for 'clause' yield 'body'.
 // Clause being the various filters and body being the value returned into the
 // yield.
-
 def scalaFiles =
   for {
     file <- filesHere
@@ -94,7 +91,6 @@ val exampleFiles = scalaFiles
 println(exampleFiles(0).getName)
 
 // A way to change an Array[File] to Array[Int] with yield. WITH MAGIC.
-
 val forLineLengths =
   for {
     file <- filesHere
@@ -105,8 +101,7 @@ val forLineLengths =
   } yield trimmed.length
 
 
-// Get all files inside directories! Nifty.
-
+// Get all files inside directories
 val testYield =
   for {
     file <- filesHere
