@@ -12,3 +12,15 @@ firstArg match {
                                    // wildcard symbol, used to match unknown
                                    // values
 }
+
+// This is absolutely not functional, look at all those side effects!
+
+val friend =
+  firstArg match {
+    case "salt"   => "pepper"
+    case "chips"  => "salsa"
+    case "eggs"   => "bacon"
+    case _        => "huh?"
+  }
+
+println(friend)
