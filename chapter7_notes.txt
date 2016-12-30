@@ -12,3 +12,5 @@ If you want to do nested iteration (multiple if statements cascading after one
 another inside a for), you need to remember to place a semi-colon after all ifs
 besides the last one. You can get around this by using curly brackets instead of
 parens for the for statement.
+
+Variable scope is pretty much the same in Scala as it is in Java.

@@ -21,3 +21,7 @@ def searchFrom(i: Int): Int =
   else searchFrom(i + 1)
 
 val a = searchFrom(0)
+
+// The above code is also tail-recursion, so the compiler will generate code
+// similar to a while loop. Each recurisve call is implemented as a jump back to
+// the beginning of the function. Optimization!
