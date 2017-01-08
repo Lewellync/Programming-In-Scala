@@ -32,7 +32,7 @@ object LocalLongLiens {
   def processFile(filename: String, width: Int) = {
 
     // Method declared within another method, only exists in this scope. Note,
-    // local functions can see parameters of their enclosing function.
+    // local functions can see parameters of th eir enclosing function.
     def processLine(line: String) = {
       if (line.length > width)
       println(filename + ": " + line.trim)
