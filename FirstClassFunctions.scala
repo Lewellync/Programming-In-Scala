@@ -56,7 +56,15 @@ listNumbers.foreach(println _)
 // applied functions. In Scala, when you invoke a function, passing in any
 // needed arugments, you apply that function to the args. For example:
 def sum(a: Int, b: Int, c: Int) = a + b + c
+
+// This first one creates a function with an apply method that takes 3 params,
+// and fills all 3 arguments into the sum signature
 val sumVague = sum _ // Don't have to specify parem type with all placeholder
                      // parems
+println(sumVague(1,2,3))
+
+// This second one creates a class with an apply method that takes 1 param, and
+// fills in the one unknown param in the sum signature
 val sumLessVague = sum (1, (_: Int), 3) // Must specify type with non
                                         // placeholder parems
+println(sumLessVague(2))
