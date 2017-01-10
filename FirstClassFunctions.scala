@@ -48,10 +48,6 @@ println(f(5, 10))
 // Note: '_ + _' expands into a literal for a function that takes two parems.
 // Note: Placeholder can be used only if each parem is used once and only once.
 
-// For some things you can remove the param list instead of a single parem
-// 'x => println(x)' can be rewrittten to be:
-listNumbers.foreach(println _)
-
 // Using the underscore as the placeholder like this you create partially
 // applied functions. In Scala, when you invoke a function, passing in any
 // needed arugments, you apply that function to the args. For example:
@@ -68,3 +64,14 @@ println(sumVague(1,2,3))
 val sumLessVague = sum (1, (_: Int), 3) // Must specify type with non
                                         // placeholder parems
 println(sumLessVague(2))
+
+// For some things you can remove the param list instead of a single parem
+// 'x => println(x)' can be rewrittten to be:
+listNumbers.foreach(println _)
+
+// You can even remove the placeholder, if a function is required at that point
+// in the code. Foreach requires a function, so you can write it like this and
+// the placeholder is implied
+listNumbers.foreach(println)
+
+// Note: This will only work in places where only a function is expected

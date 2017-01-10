@@ -27,7 +27,7 @@ object LongLines {
 // Scala offers the private method for functions, same as Java, so as to not
 // use too many names, but they also allow us to create local functions.
 
-object LocalLongLiens {
+object LocalLongLines {
 
   def processFile(filename: String, width: Int) = {
 
