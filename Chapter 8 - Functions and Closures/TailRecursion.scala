@@ -23,3 +23,17 @@
 // recursion. The Scala compiler sees that the last thing approximate does is
 // call itself, so it replaces that recursive call with a jump back to the
 // beginning of the function with updated params.
+
+// The following is NOT tail recursion, because the last line of the function
+// is not just calling itself. The increment messes it all up.
+def boom(x: Int): Int =
+  if (x == 0) throw new Exception("Boom!")
+  else boom(x - 1) + 1
+
+def boomTail(x: Int): Int =
+  if (x == 0) throw new Exception("Boom!")
+  else boom(x - 1)
+
+boomTail(3)
+
+//
