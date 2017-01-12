@@ -37,5 +37,6 @@ println(sum)
 def makeIncrease(more: Int) = (x: Int) => x + more
 val inc10 = makeIncrease(10)
 val inc99 = makeIncrease(99)
+println(inc10(10) + " " + inc99(10))
 // When you call makeIncrease, a closure is created that captures 10 or 99 as
 // the binding for more and returns a function with that binding. Neat!
