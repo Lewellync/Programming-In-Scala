@@ -10,7 +10,7 @@ val addMore = (x: Int) => x + more  // More is a free var, x is a bound
 println(addMore(3))
 // The function value that's created at runtime from this function literal is
 // called a closure, because it closes the function literal by capturing values
-// for free variables.
+// for free variables. Closures are only from function literals with free vars
 
 // A function literal with no free variables is a closed term
 val closedTerm = (x: Int) => x + 1
