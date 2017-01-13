@@ -42,4 +42,9 @@ println(twice(_ + 1, 5))
   }
 
   val file = new File("date.txt")
+  withPrintWriter(file) { writer => writer.println(new java.util.date) }
 */
+
+// Another advantage of currying is in Scala, if a function only takes on arg,
+// you can surround it by curly brackets. With currying, you can surround the
+// last arg with curly brackets, making it feel more like Scala supported code
