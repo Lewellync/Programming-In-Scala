@@ -1,0 +1,46 @@
+
+Composition and Inheritance
+
+Topics Discussed :
+  - Composition - One class holding a reference to another, using the referenced
+                  class to complete its function.
+  - Inheritance - Superclass / subclass relationship
+  - Abstract Classes
+  - Parameterless Methods
+  - Extending Classes
+  - Overriding Methods and Fields
+  - Parametric Fields
+  - Invoking Superlcass Constructors
+  - Polymorphism
+  - Dynamic Binding
+  - Final Members and Classes
+  - Factory Objects and Methods
+
+10.1 - Two-Dimensional Layout Library
+
+Running example in this chapter will be creating a library for building and
+rendering two dimensional layout elements. Each element will represent a
+rectangle filled with text. We will have a factory method named "elem"
+
+  elem(s: String): Element
+
+Elements will be modeled with a new type named called, creatively enough,
+"Element". It will have above and beside as methods, which receive a second
+element and combines them.
+
+  val column1 = elem("hello") above elem("***")
+  val column2 = elem("***") above elem("world")
+
+  hello ***
+  *** world
+
+Layout elements are a good example of a system in which objects can be built
+from simple parts and combined together. It will also help you to understand
+library design (simplest elements combined into larger more complex ones) and
+
+Do not define parameterless methods unless the method has no side effects.
+Paranethesis on the end of a function is a good indicator that some side effect
+is occurring and that convention should be preserved.
+
+To instantiate an abstract class (that cannot be created with new), it must be
+extended by a non-abstract class.
