@@ -1,4 +1,3 @@
-package Element
 
 // It makes sense to include a member 'contents' in our Elemenet that represents
 // the actual contents of the element. This will be represented by an array of
@@ -27,12 +26,22 @@ abstract class Element { // A class with abstract members must be abstract
 // may have slightly faster access because the value is precomputed.
 
   def height: Int = contents.length // No () makes it a parameterless + no s.e.
-  def width: Int = if (height == 0) 0 else contents(0).lenght
+  def width: Int = if (height == 0) 0 else contents(0).length
 }
 
 // Extending has two effects: ArrayElement inherits all non-private members of
-// Element, and ArrayElement is a subtype of type 'Element'
+// Element, and ArrayElement is a subtype of type 'Element'. ArrayElement
+// overrides contents, but inherits height and width
 
 class ArrayElement(conts: Array[String]) extends Element {
-  def contents: Array[Strng] = conts // '=' means this is an implemented method
+  def contents: Array[String] = conts // '=' means this is an implemented method
 }
+
+val ae = new ArrayElement(Array("hello","world"))
+println(ae.width)
+
+// Subtyping means that a vlue of the subclass can be used whenever a value of
+// the superclass is required. Variable 'e' is defined to be type Element, so
+// its initializing value should also be an Element.
+
+val e: Element = new ArrayElement(Array("hello"))

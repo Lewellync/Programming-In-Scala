@@ -44,3 +44,14 @@ is occurring and that convention should be preserved.
 
 To instantiate an abstract class (that cannot be created with new), it must be
 extended by a non-abstract class.
+
+Inheritance means that all members of the superclass are also members of the
+subclass, with two exceptions:
+
+  First, private members of the superclass are not inherited in the subclass
+  Second, a member of a superclass is not inherited if a member within the same
+          name and parameters is already implemented in the subclass. In that
+          case, the member of the subclass overrides the member of the superclass.
+          If the member in the subclass is concrete and the member in of the
+          superclass is abstract the concrete member implements the abstract
+          one.
