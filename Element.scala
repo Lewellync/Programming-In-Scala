@@ -19,7 +19,7 @@ abstract class Element { // A class with abstract members must be abstract
 
 // Another note, parameterless methods should only be used when there are no
 // params (obviously) AND the method acceses mutable state only by reading
-// fields of the containing object (it does not change mutable state)
+// fields of the containing object (it does not change mutable state)fdrfff
 
 // For height and width, they could be declared as fields instead of defs. The
 // tradeoffs are a def takes no memory space in the Element object, and a field
@@ -45,3 +45,20 @@ println(ae.width)
 // its initializing value should also be an Element.
 
 val e: Element = new ArrayElement(Array("hello"))
+
+// In Scala, fields and methods belong to the same namespace, so a field can
+// override a parameterless method
+
+class ArrayElementOverride(conts: Array[String]) extends Element {
+  val contents: Array[String] = conts // Overrode parameterless method with field
+}
+
+// We also have parametric fields, which are confusing but dope. For more on
+// these, checkout Cat.Scala
+
+class ArrayElementParametric(
+  val contents: Array[String] // Note: this is prefixed by 'val'. This is
+                              // shorthand that defines at the same time a param
+                              // and field with the same name. It's just like if
+                              // it had been written like line 52-54
+) extends Element
