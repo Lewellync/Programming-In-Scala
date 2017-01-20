@@ -34,7 +34,11 @@ abstract class Element { // A class with abstract members must be abstract
 // overrides contents, but inherits height and width
 
 class ArrayElement(conts: Array[String]) extends Element {
-  def contents: Array[String] = conts // '=' means this is an implemented method
+  override def contents: Array[String] = conts  // '=' means this is an
+                                                // implemented method, and since
+                                                // this is implementing an
+                                                // abstract class, the override
+                                                // isn't necessary
 }
 
 val ae = new ArrayElement(Array("hello","world"))
@@ -62,3 +66,12 @@ class ArrayElementParametric(
                               // and field with the same name. It's just like if
                               // it had been written like line 52-54
 ) extends Element
+
+
+// Since LineElement extends ArrayElement, and AE's constructor takes a param,
+// Array[String], LE needs to pass an arg to the primary constructor of its
+// superclass.
+class LineElement(s: String) extends ArrayElement(Array(s)) {
+  override def width = s.length
+  override def height = 1
+}
