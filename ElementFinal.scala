@@ -1,5 +1,4 @@
-// Removed notes for Element object
-// Will use parametric and non-parametric definitions
+// Removed most notes from Element object
 
 abstract class Element {
   def contents: Array[String]
@@ -11,6 +10,7 @@ class ArrayElement(conts: Array[String]) extends Element {
   val contents: Array[String] = conts
 }
 
+// Same as above
 class ArrayElementParametric(
   val contents: Array[String]
 ) extends Element
@@ -18,4 +18,13 @@ class ArrayElementParametric(
 class LineElement(s: String) extends ArrayElement(Array(s)) {
   override def width = s.length
   override def height = 1
+}
+
+class UniformElement(
+  ch: Char,
+  override val width: Int,
+  override val height: Int
+) extends Element {
+  private val line = ch.toString * width
+  def contents = Array.fill(height)(line)
 }
