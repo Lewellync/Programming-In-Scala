@@ -75,3 +75,12 @@ class LineElement(s: String) extends ArrayElement(Array(s)) {
   override def width = s.length
   override def height = 1
 }
+
+class UniformElement(
+  ch: Char,
+  override val width: Int,
+  override val height: Int
+) extends Element {
+  private val line = ch.toString * width // I have no idea how this works
+  def contents = Array.fill(height)(line)
+}
