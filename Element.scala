@@ -2,16 +2,33 @@
 
 object Element {
 
+  /*
+    This is a class defined using parametric fields. The below is shorthand
+    for an equivalent definition such as:
+
+    private class ArrayElement(conts: Array[String]) extends Element {
+      val contents: Array[String] = conts;
+    }
+  */
   private class ArrayElement(
     val contents: Array[String]
   ) extends Element
 
+  /*
+    You're more used to this kind of definition. Note that even though contents
+    is a def in Element, it is a val here. A def is the most abstract form for
+    defining a member, and can be overriden by a def, val, lazy val, or object.
+    Because contents is not implemented, no 'override' is necessary.
+  */
   private class LineElement(s: String) extends Element {
     val contents = Array(s)
     override def width = s.length
     override def height = 1
   }
 
+  /*
+    You can add your own
+  */
   private class UniformElement(
     ch: Char,
     override val width: Int,
@@ -30,11 +47,16 @@ object Element {
   def elem(line: String): Element =
     new LineElement(line)
 }
+
 import Element.elem
 
 abstract class Element {
+
+  // This is an unimplmented method (notice the lack of '=')
   def contents:  Array[String]
 
+  // These methods are both implemented. You can have object fields as a
+  // definition or a variable, it's up to you.
   def width: Int = contents(0).length
   def height: Int = contents.length
 
@@ -73,7 +95,6 @@ abstract class Element {
 
 object LayoutElement {
   def main(args: Array[String]) {
-
     println("example [\n" + example + "\n]")
   }
 
