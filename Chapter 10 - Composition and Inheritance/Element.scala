@@ -1,5 +1,4 @@
-// ToDo: annotate this whole fucking thing
-
+// Factory Object
 object Element {
 
   /*
@@ -27,7 +26,9 @@ object Element {
   }
 
   /*
-    You can add your own
+    Private and override function as you'd remember from Java. Here you can see
+    that you need to override width and height in the parameter list, because
+    they are now vals and no longer defs.
   */
   private class UniformElement(
     ch: Char,
@@ -38,7 +39,11 @@ object Element {
     def contents = Array.fill(height)(line)
   }
 
-  def elem(contents:  Array[String]): Element =
+  /*
+    These are factory methods that take different parameters and create new
+    layout elements fromt hem. Nothing to different from Java jere.
+  */
+  def elem(contents: Array[String]): Element =
     new ArrayElement(contents)
 
   def elem(chr: Char, width: Int, height: Int): Element =
@@ -60,12 +65,14 @@ abstract class Element {
   def width: Int = contents(0).length
   def height: Int = contents.length
 
+  // Uses widen to match the width of uneven elements.
   def above(that: Element): Element = {
     val this1 = this widen that.width
     val that1 = that widen this.width
     elem(this1.contents ++ that1.contents)
   }
 
+  // Uses heighten to match the height of uneven elements.
   def beside(that: Element): Element = {
     val this1 = this heighten that.height
     val that1 = that heighten this.height
@@ -74,6 +81,7 @@ abstract class Element {
       yield line1 + line2)
   }
 
+  // Creates a UniformElement of spaces to append to either side of an element.
   def widen(w: Int): Element =
     if (w <= width) this
     else {
@@ -82,6 +90,8 @@ abstract class Element {
       left beside this beside right
     }
 
+  // Creates a UniformElement of spaces to append to the top and bottom of an
+  // element.
   def heighten(h: Int): Element =
     if (h <= height) this
     else {
@@ -93,6 +103,9 @@ abstract class Element {
   override def toString = contents mkString "\n"
 }
 
+// For testing
+
+/*
 object LayoutElement {
   def main(args: Array[String]) {
     println("example [\n" + example + "\n]")
@@ -105,4 +118,7 @@ object LayoutElement {
   }
 }
 
-LayoutElement.main(args) // This is required
+// When running large Scala files as a script (on the command line), you must
+// explicitly call the main function. REMEMBER THIS.
+LayoutElement.main(args)
+*/
