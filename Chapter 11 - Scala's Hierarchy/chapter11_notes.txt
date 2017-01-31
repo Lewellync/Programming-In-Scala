@@ -1,0 +1,23 @@
+
+In Scala, every class inherits from a common superclass named 'Any'. Because
+every class is a subclass, the methods defined in Any are universal; they may
+be invoked on any object. On the other end of the spectrum are the subclasses
+'Null' and 'Nothing'. They are a subclass of every other class.
+
+Under Any are 'AnyRef' and 'AnyVal'. AnyVal is the base value class, supporting
+things like Int and Char, while AnyRef is the base reference class, supporting
+things like java.lang.Object.
+
+How are primitives implemented?
+Integers, for example, are stored as 32 bit words; the same as Java. This is for
+efficiency on the JVM and for interoperability. Standard operations like
+addition and division are implemented as primitive operations; Scala uses the
+backup class java.lang.Integer for operations whenever an integer
+
+On values, == means 'are the values the same'
+On references, == means 'do they refer to the same thing'
+
+Scala overrides Java's trap of using '==' versus 'equals'. Both look at value
+equality, not reference equality.
+
+When you want to do reference equality, you use 'eq' and 'ne'.
