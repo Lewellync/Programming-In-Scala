@@ -21,3 +21,32 @@ Scala overrides Java's trap of using '==' versus 'equals'. Both look at value
 equality, not reference equality.
 
 When you want to do reference equality, you use 'eq' and 'ne'.
+
+Class null is the type of null reference and a subclass of every reference class.
+Class nothing is the subclass of every other type. Unlike null, there exists no
+value to type nothing. It signals abnormal termination. It can be used for
+something like:
+
+  def divide(x: Int, y: Int): Int =
+    if(y != 0) x / y
+    else error("can't divide by zero")
+
+A call to error has type nothing, but because nothing is a subtype of Int, the
+conditional will always return an Int.
+
+NOTE THAT YOU WILL FORGET: scala <file> wraps everything into a toplevel class
+to enable scripting, so if you have class definitions on their own they will
+fail. You need to use scalac.
+
+Value Classes
+
+You can define your own value classes : Currency.scala
+
+Type Monoculture
+
+To get the most benefit from the Scala class hierarchy, try to define a new
+class for each domain concept, even when it would be possible to reuse to same
+class for different purposes. Even if such a class lacks methods or fields, more
+classes usually lets the comipler be a better tool to you as a programmer.
+
+For example : HTMLGen.scala

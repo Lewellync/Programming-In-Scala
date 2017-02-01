@@ -57,15 +57,12 @@ class ArrayElementOverride(conts: Array[String]) extends Element {
   val contents: Array[String] = conts // Overrode parameterless method with field
 }
 
-// We also have parametric fields, which are confusing but dope. For more on
-// these, checkout Cat.Scala
+// We also have parametric fields, which are dope as hell. The below is
+// equiavlent to lines 56-58. This makes so much more sense. By defining the
+// value in your parameters with the 'val' prefix, you remove the need to just
+// add them again in the body and can access them as a field.
 
-class ArrayElementParametric(
-  val contents: Array[String] // Note: this is prefixed by 'val'. This is
-                              // shorthand that defines at the same time a param
-                              // and field with the same name. It's just like if
-                              // it had been written like line 52-54
-) extends Element
+class ArrayElementParametric(val contents: Array[String]) extends Element
 
 
 // Since LineElement extends ArrayElement, and AE's constructor takes a param,
