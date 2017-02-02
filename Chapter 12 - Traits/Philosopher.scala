@@ -72,3 +72,21 @@ boop.philosophize
 
 val boopers: Philosophical = new Honda
 boopers.philosophize
+
+/*
+  You might be thinking, traits can do anything a class can do! And you'd almost
+  be right, except for two noticeable exceptions.
+
+  Firstly, a trait cannot have any class parameters (parameters passed to the
+  primary constructor of the class).
+
+  class Point(x: Int, y: Int) is a valid class definition
+  trait NoPoint(x: Int, y: Int) is an invalid trait definition
+
+  Secondly, 'super' calls suchas super.toString are statically bound in classes.
+  If you call super in a class, you know exactly which method will be invoked.
+  When you write the same thing in a trait, the method implementiation to invoke
+  for the super call is undefined when you define the trait. The implementiation
+  to invoke will be determined anew each time the trait is mixed into a concrete
+  class.
+*/
