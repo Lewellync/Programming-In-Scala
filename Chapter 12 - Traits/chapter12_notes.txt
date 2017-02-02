@@ -7,3 +7,28 @@ Some basics of traits : Philosopher.scala
 
 TLDR: Traits are like way more powerful Java interfaces, and act pretty similarly
 when you get down to the nuts and bolts of it all.
+
+Thin vs Rich Interfaces
+
+One major use of traits is to automatically add methods to a class in terms of
+methods the class already has. Thin interfaces have few methods, so clients get
+less out of them, but implementers can implement them faster and easier. Rich
+interfaces the opposite is true.
+
+In Java interfaces are often thin, because there can be no concrete methods in
+an interface. But Scala traits can contain concrete methods! Making rich methods
+the more convenient option most of the time.
+
+To get this working in Scala, when you design a trait, try to create a small
+number of abstract methods (thin part) and a large number of concrete methods
+implemented using those abstract methods. When a class mixes in this trait and
+implements the abstract methods, they gain access to all of the concrete methods
+without having to implement them themselves! Neat.
+
+Encrichment traits : Rectangle.scala
+
+Comparison is another domain where rich interface is convenient. Consider how a
+Java rich interface would implement the ordering of some objects through the
+methods <, >, <=, >=, and how these could be improved by the Scala trait Ordered.
+
+See : OrderedRational.scala
