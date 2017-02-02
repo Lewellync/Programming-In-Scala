@@ -1,0 +1,9 @@
+Traits are a fundamental part of code reuse in Scala. A trait encapsulates method
+and field definitions which can be reused by mixing them into classes. Different
+than class inheritance, a class can mix in any number of traits. They are similar
+to interfaces, but have the capabilities of abstract classes.
+
+Some basics of traits : Philosopher.scala
+
+TLDR: Traits are like way more powerful Java interfaces, and act pretty similarly
+when you get down to the nuts and bolts of it all.
