@@ -32,3 +32,11 @@ Java rich interface would implement the ordering of some objects through the
 methods <, >, <=, >=, and how these could be improved by the Scala trait Ordered.
 
 See : OrderedRational.scala
+
+Traits as Stackable Modifications
+
+You know what's great? Stacks. Stacks of pizza, of cheese, of traits. Wait what.
+So in addition to adding functionality, traits can also modify base functionality
+of classes and stack on top of each other for CRAZY FUNCTIONALITY
+
+See : IntQueue.scala

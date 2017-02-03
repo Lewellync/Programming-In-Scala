@@ -17,5 +17,19 @@ class Rational(n: Int, d: Int) {
 }
 
 /*
+  Now let's use the Ordered trait to clean up the above. In that trait is a
+  method 'compare' which returns an interger. When implemented properly, it should
+  take one object of type [T] and return:
 
+    > 0 if the receiver is greater than the argument (this > that)
+    < 0 if the receiver is smaller than the argument (this < that)
+    0 if the receiver is the same as the argument (this = that)
+
+  Of note, Ordered takes a type parameter (the type will be the elements you are
+  comparing).
 */
+class Rational(n: Int, d: Int) extends Ordered[Rational] {
+  // ...
+  def compare(that: Rational) =
+    (this.numer * that.denom) - (that.numer * this.denom)
+}
