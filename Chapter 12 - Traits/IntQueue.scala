@@ -99,3 +99,29 @@ q2.get()
   take effect first. If that method calls super, it invokes the method in the next
   trait to the left, and so forth.
 */
+
+/*
+  So let's consider why multiple inheritance isn't what we want, and justify the
+  cleanliness and importance of stacking mixins. Consider how to stack modifications
+  in a language with traditional multiple inheritance. It would look something like
+  below. Which put is being called? Does Doubling or Incrementing take precedence?
+  Without stacking only one would occur, and it woiuld be up to the language.
+*/
+val q = new BaiscIntQueue with Incrementing with Doubling
+q.put(42)
+
+/*
+  What about the possibility of allowing the programmer to explicitly call superclass
+  methods when they use super? (This isn't real Scala). This approach gives us new
+  problems, in addition to added verbosity.
+
+  First, BasicIntQueue's put is being called twice, with a doubled value and an
+  incremented value, but never one with both. Multiple inheritance just doesn't
+  do what we want it to do with super.
+*/
+trait MyQueue extends BasicIntQueue with Incrementing with Doubling {
+  def put(x: Int) = {
+    Incrementing.super.put(x)
+    Doubling.super.put(x)
+  }
+}

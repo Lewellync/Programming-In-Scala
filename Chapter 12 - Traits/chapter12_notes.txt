@@ -40,3 +40,37 @@ So in addition to adding functionality, traits can also modify base functionalit
 of classes and stack on top of each other for CRAZY FUNCTIONALITY
 
 See : IntQueue.scala
+
+So why is trait stacking done the way it is? What are other ways of doing the same
+thing, like multiple inheritance? One of the primary reason Scala does it this way
+is because of the interpretation of super. With multiple inheritance, the method
+called by super can be determined right where the call appears.
+
+With traits, the method called is determined by a linearization of the classes and
+traits that are mixed into a class. This is the difference that enables the stacking
+of modifications shown at the end of IntQueue.scala.
+
+Refer back to: IntQueue.scala Line 103
+
+Let's talk linearization, and how it works. When you instantiate a class with new,
+Scala takes the class and all of its inherited classes and traits, and puts them in a
+single, linear order. Then, whenever you call super inside one of those classes, it
+looks up the linearization order to determine what implementation to use.
+
+See : Linearization.scala
+
+To Trait or not to Trait?
+Whenever you implement a reusable collection of behavior, you will have to decide
+whether you want to use a trait or an abstract class. There is no firm rule, but
+there are some guidelines that can help make the decision for you!
+
+If the behavior will not be reused, then make it a concrete class.
+
+If it might be reused in multiple unrelated classes, make it a trait.
+
+If you want to inherit from it in Java code, use an abstract class.
+
+If you plan to distribute it in compiled form, and you expect outside groups to
+write classes inheriting form it, you may lean towards using an abstract class.
+
+If you don't know after considering the above, start as a trait.
