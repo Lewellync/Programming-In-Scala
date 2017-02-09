@@ -1,0 +1,19 @@
+Vocabulary :
+
+Coupling - the extent to which various parts of a program rely on other parts.
+
+Notes :
+
+When working on a program, especially large ones, it is important to minimize
+coupling. Low coupling reduces the risk that a small change in one part of the program
+can have devastating consequences in another part. One way to minimize this risk
+is to write in a modular style. Divide the program into a number of smaller modules
+that exist independent of any other module.
+
+This is the decision behind the creation of packages and imports, and while they
+are similar the implementations in Java, it is important to have an understanding
+of them in scala.
+
+Scala code exists in the Java platform's global hierarchy of packages. All code we've
+written so far has existed in the 'unnamed' package. Because Scala exists within Java,
+it is recommended to follow Java's reverse-domain-name convention for packages.
