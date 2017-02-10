@@ -17,3 +17,21 @@ of them in scala.
 Scala code exists in the Java platform's global hierarchy of packages. All code we've
 written so far has existed in the 'unnamed' package. Because Scala exists within Java,
 it is recommended to follow Java's reverse-domain-name convention for packages.
+
+In Scala, packages and their members can be imported using import clauses. Imported
+items can then be accessed by a simple name like File, as opposed to requiring a
+qualified name like in Java. An import clause makes members of a package or object
+available by their names alone without needing to prefix them by the package or object
+name.
+
+Scala's import clauses are quite a bit more flexible than Java's, and they follow
+three principle differences.
+  1. May appear anywhere
+  2. May refer to objects (singleton or regular) in addition to packages
+  3. Let you rename and hide some of the imported members
+
+An import selector can consist of the following:
+  1. A simple name x. This includes x in the set of imported names
+  2. A renaming clause x => y
+  3. A hiding clause x => _
+  4. A catch-all clause _
