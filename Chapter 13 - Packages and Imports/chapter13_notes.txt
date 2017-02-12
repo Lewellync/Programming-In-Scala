@@ -35,3 +35,13 @@ An import selector can consist of the following:
   2. A renaming clause x => y
   3. A hiding clause x => _
   4. A catch-all clause _
+
+Scala also adds three import clauses implicitly to every .scala file.
+  1. import java.lang._
+  2. import scala._
+  3. import Predef._
+
+The java.lang package contains standard Java classes. Because of this, you can write
+Thread instead of java.lang.Thread, etc. The scala package contains the standard Scala
+library, with many common classes and objects. The Predef object contains many definitions
+of types, methods, and implicit conversions that are commonly used on Scala programs.
