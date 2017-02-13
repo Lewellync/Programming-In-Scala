@@ -45,3 +45,13 @@ The java.lang package contains standard Java classes. Because of this, you can w
 Thread instead of java.lang.Thread, etc. The scala package contains the standard Scala
 library, with many common classes and objects. The Predef object contains many definitions
 of types, methods, and implicit conversions that are commonly used on Scala programs.
+
+Scala also contains an even more restrictive private modifier, private[this]. A
+definition is called object-private, because it is accessible only from within the
+same object that contains the definition. Using this is a guarantee that it will not
+be seen from other objects of the same class.
+
+In Java, static members and instance members belong to the same class, so access
+modifiers apply uniformly to them. In Scala, a class shares all its access rights with
+its companion object and vice versa; in particular, an object can access all private
+members of its companion object.
