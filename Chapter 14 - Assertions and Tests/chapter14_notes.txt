@@ -1,0 +1,44 @@
+
+14.1 - Assertions
+
+Assertions and tests are important for checking the behavior of software, but you
+already knew this. Assertions in Scala are written as calls of a predefined method
+'assert'. The expression,
+
+  assert(condition)
+
+throws an AssertionError if condition does not hold. There's also a two-argument version
+of assert,
+
+  assert(condition, explanation)
+
+which tests condition, and if it does not hold, throws an AssertionError that contains
+the given explanation. The type of explanation is Any, and assert will call toString on
+it to get a string explanation.
+
+Assertions can be enabled and disabled using the JVM's -ea and -da flags.
+
+14.2 - Testing
+
+Testing in Scala is also important, and probably more what you should learn and know,
+because assertions and ensuring break code but testing is done independent.
+
+  ScalaTest - the most flexible Scala test framework.
+
+Familiar with JUnit? Use FunSuite - 14.3
+ScalaTest's biggest concept is the suite, its collection of tests. A test can be
+anything with a name that can start and either succeed, fail, be pending, or cancelled.
+Trait Suite is the central unit of composition in TestSuite, and declares "lifestyle"
+methods defining thze default ways to run tests, which can be overriden to customize
+how tests are written and run.
+
+It also offers style traits that extend Suite and ovverride life cycle methods, as
+well as mixin traits that override lifecycle methods to address particular testing
+needs.
+
+You define test classes by composing Suite style and mixin traits, and define test
+suites by composing Suite instances.
+
+DiagrammedAssertions are dope as hell, learn about them. There's a ton of tools in
+ScalaTest that let you get informative failure reports and you should definitely
+use them in your next big project.
