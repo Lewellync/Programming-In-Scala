@@ -20,6 +20,9 @@ def above(that: Element): Element = {
   The ensuring method can be used with any result type, and takes one argument; a
   predicate function that takes a result type and returns Boolean, and passes the
   result to the predicate. If the predicate returns true, ensruing will return an error.
+
+  In the example, the underscore is a placeholder for an argument passed to the predicate;
+  the Element result of the widen method.
 */
 
 // 14.2 - Using 'ensuring' to assert a function's result

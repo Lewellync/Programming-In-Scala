@@ -1,0 +1,32 @@
+
+Case classes and pattern matching are two constructs that support writing regular,
+non-encapsulated data structures. These two constructs are particularly helpful for
+tree-like recursive data.
+
+15.1
+
+Let's get our feet wet with the concept and basic idea behind mapping with a simple
+example concerning ourselves with manipulating arithmetic expressions.
+
+L 15.1
+
+The above hierarchy includes an abstract base class and four subclasses, one for each
+kind of expression being considered. The bodies of all five classes are empty, as previously
+mentioned, in Scala you can leave out the braces around an empty class body if you wish.
+
+Case Classes
+The other noteworthy thing 15.1 is that each subclass has a case modifier. Classes with
+such a modifier are called case classes (go figure). Using this modifier gives you that
+sweet sweet syntactic sugar.
+
+It adds a factory method with the name of the class. You can write 'Var("x")' instead of
+'new Var("x")'. These factory methods are useful when nested, because there are no 'new'
+keywords sprinkled throught the code. For instance:
+
+val v = Var("x")
+val op = BinOp("+", Number(1), v)
+
+Another syntactic convenience is that all arguments in the parameter list of a case class
+implicitly get a val prefix, so they are maintained as fields. The compiler adds "natural"
+implementations of methods toString, hashCode, and equals to your class. Lastly, the compiler
+adds a copy method to your class for making modified copies.
