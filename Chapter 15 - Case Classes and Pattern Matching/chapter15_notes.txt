@@ -3,12 +3,12 @@ Case classes and pattern matching are two constructs that support writing regula
 non-encapsulated data structures. These two constructs are particularly helpful for
 tree-like recursive data.
 
-15.1
+ == 15.1 ==
 
 Let's get our feet wet with the concept and basic idea behind mapping with a simple
 example concerning ourselves with manipulating arithmetic expressions.
 
-L 15.1
+-- L 15.1
 
 The above hierarchy includes an abstract base class and four subclasses, one for each
 kind of expression being considered. The bodies of all five classes are empty, as previously
@@ -30,3 +30,28 @@ Another syntactic convenience is that all arguments in the parameter list of a c
 implicitly get a val prefix, so they are maintained as fields. The compiler adds "natural"
 implementations of methods toString, hashCode, and equals to your class. Lastly, the compiler
 adds a copy method to your class for making modified copies.
+
+Very little tradeoffs for huge benefits.
+
+-- L 15.2
+
+The right-hand side of simplifyTop is a match expression, which is like switches but
+is written after the selector expression.
+
+A constant pattern like "-" or 1 matches value that are equal to the constant with
+respect to ==
+
+A variable pattern like 'e' matches every value. The variable then refers to that
+value in the right hand side of the case clause.
+
+A wildcard pattern(_) also matches every value, but does not introduce a variable name
+to refer to that value. In 15.2, the default case does nothing with the expression.
+
+A constructor pattern looks like 'UnOp("-", e)'. This pattern matches all values of type
+UnOp whose first argument matches "-" and whose second matches e. Note that the arguments
+to the constructor are themselves pattern.
+
+A match must always have a default case, otherwise it will throw a MatchError.
+-- L 15.3
+
+ == 15.2 ==
