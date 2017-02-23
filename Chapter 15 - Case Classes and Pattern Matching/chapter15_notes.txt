@@ -55,3 +55,22 @@ A match must always have a default case, otherwise it will throw a MatchError.
 -- L 15.3
 
  == 15.2 ==
+
+Let's go back and look at each pattern introduced in 15.1 in detail and understand
+how each of them works.
+
+Wildcard Pattern
+The wildcard pattern (_) matches any object whatsoever, as shown at the end of 15.2
+and 15.3. Wildcards can also be used to ignore parts of an object that you do not
+care about. For example, in 15.3, we don't care about the operations, just that it
+is a BinOp. The code can be rewritten and is in 15.4 to include wildcards.
+
+Constant Patterns
+A constant pattern only matches itself, ever. Any literal can be a constant, as shown
+in 15.5. Important to note that Nil, a singleton object, is a pattern that matches
+only the empty list.
+
+Variable Patterns
+A variable pattern matches the same as a wildcard, but binds the variable to whatever
+the object is. You can then use the variable to act on the object further, as shown
+in 15.6.

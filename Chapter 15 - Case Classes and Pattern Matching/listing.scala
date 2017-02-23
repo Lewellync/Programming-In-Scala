@@ -29,3 +29,33 @@ expr match {
   case BinOp(op, left, right) => println(expr + " is a binary operation")
   case _ => // Blank is valid (and necessary), it does nothing and returns type Unit
 }
+
+// 15.4 - A pattern match with wildcard patterns
+expr match {
+  case BinOp(_, _, _) => println(expr + " is a binary operation") // WILDCARD
+  case _ =>
+}
+
+// 15.5 A pattern match with constant patterns
+def describe(x: Any) = x match {
+  case 5 => "five"
+  case true => "truth!"
+  case "hello" => "hi!"
+  case Nil => "the empty list"
+  case _ => "something else"
+}
+
+// 15.6 - A pattern match with a variable pattern
+expr match {
+  case 0 => "zero"
+  case somethingElse => "not zero: " + somethingElse
+}
+
+// 15.6.1 - Scala uses upper case to signify constants in pattern matching
+import math.{E, Pi}
+E match {
+  case Pi => "strange math? Pi = " + Pi
+  case _ => "OK"
+}
+
+// 15.6.2 -
