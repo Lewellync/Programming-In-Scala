@@ -74,3 +74,35 @@ Variable Patterns
 A variable pattern matches the same as a wildcard, but binds the variable to whatever
 the object is. You can then use the variable to act on the object further, as shown
 in 15.6.
+
+Constructor Patterns
+Constructors are the first very powerful part of pattern matching. A construct pattern
+looks like "BinOp("+", e, Number(0))", with a name and a number of patterns within
+parentheses. This allows deep matching, and the inner patterns can themselves be
+constructors. You can see this in 15.2 for double negation.
+
+Sequence Patterns
+You can also match against sequence types, like List or Array, just like you can
+match against case classes. A list example with a fixed length is in 15.8. If you
+want to match against an arbitrary length sequence, specify _* as the last element
+of the pattern. This matches any number of elements within the sequence, and is shown
+in 15.9.
+
+Tuple Patterns
+Just like sequences, you can match against tuples. This is not very different from
+lists, but much less useful unless you use variables to specify the pattern parameters.
+
+Typed Patterns
+You can use a typed pattern as a convenient replacement for type tests and casts.
+This is shown off in 15.11. What's done there can be rewritten using type checking
+and casting shown in 15.11.1 in 15.12. Important to note because it's confusing, you
+can't check the type of the elements inside of a Map as shown in 15.12.1, because of
+type erasure! Generics aren't saved at runtime so you can't know the types of something,
+the one exception being arrays. You can know what an array is because the type is
+stored with the array value.
+
+Variable Binding
+In addition to the standalone variable patterns, you can also add a variable to any
+other pattern. You simply write the variable name, an '@', and then the pattern.
+It does the pattern match as normal, and if the pattern succeeds, sets the variable
+to the matched object.
