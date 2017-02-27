@@ -117,3 +117,16 @@ expr match {
   case UnOp("abs", e @ UnOp("abs", _)) => e
   case _ =>
 }
+
+// 15.14.1 - Attempted rule to change addition to multiplication
+def simplifyAdd(e: Expr) = e match {
+  case BinOp("+", x, x) => BinOp("*", x, Number(2)) // Does not compile
+  case _ => e
+}
+
+// 15.14 - A match expression with a pattern guard
+def simplifyAdd(e: Expr) = e match {
+  case BinOp("x", x, y) if x == y =>
+    BinOp("*", x, Number(2))
+  case _ => e
+}

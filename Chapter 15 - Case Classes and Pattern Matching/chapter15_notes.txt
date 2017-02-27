@@ -106,3 +106,22 @@ In addition to the standalone variable patterns, you can also add a variable to 
 other pattern. You simply write the variable name, an '@', and then the pattern.
 It does the pattern match as normal, and if the pattern succeeds, sets the variable
 to the matched object.
+
+ == 15.3 ==
+
+Sometimes, syntactic pattern matching is not precise enough, and in these instances,
+we can add things like pattern guards. Say we want to replace a sum operation with
+two identical operands 'e+e' with 'e*2'.
+
+BinOp("+", Var("x"), Var("x")) transform to BinOp("*", Var("x"), Number(2))
+
+You might try and make a rule like 15.14.1, but that doens't work! Scala restricts
+patterns to be linear; a pattern variable may only appear once in a pattern. However,
+with guards you can add a catch onto that pattern and it works in 15.14.
+
+A pattern guard comes after the pattern and starts with an if, and is an arbitrary
+boolean expression. If a pattern guard is present, the match only succeeds if the guard
+evaluates to true. Other cases include:
+
+case n: Int if 0 < n => ... positive integers
+case s: String if s(0) == 'a' => ... strings that start with 'a'
