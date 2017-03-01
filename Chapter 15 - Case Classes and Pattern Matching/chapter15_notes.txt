@@ -125,3 +125,20 @@ evaluates to true. Other cases include:
 
 case n: Int if 0 < n => ... positive integers
 case s: String if s(0) == 'a' => ... strings that start with 'a'
+
+ == 15.4 ==
+
+Patterns are tried in the order in which they are written. The version of simplify
+in 15.15 presents an example where order matters. 15.15 will apply the simplification
+rules of 15.2 everywhere in an expression by modifying the return (instead of returning
+e, it now recursively calls itself on e until there is no simplification left).
+
+The fourth case has the pattern UnOp(op, e), which matches every unary operation.
+The fifth case is also a catch-all case for arbitrary binary operations, and both
+recursively apply the simplification method to their operands.
+
+In 15.15, it is important for the catch-all cases to come after more specific simplification
+rules, otherwise the catch-all would be run in favor of the more specific rules.
+15.15.1 shows an example of this.
+
+ == 15.5 ==

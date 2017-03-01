@@ -130,3 +130,24 @@ def simplifyAdd(e: Expr) = e match {
     BinOp("*", x, Number(2))
   case _ => e
 }
+
+// 15.15 - Match expression in which case order matters
+def simplifyAll(e: Expr): Expr = e match {
+  case UnOp("-", UnOp("-", e)) =>
+    simplifyAll(e) // Double negation
+  case BinOp("+", e, Number(0)) =>
+    simplifyAll(e) // Adding 0
+  case BinOp("*", e, Number(1)) =>
+    simplifyAll(e) // Multiply by 1
+  case UnOp(op, e) =>
+    UnOp(op, simplifyAll(e))
+  case BinOp(op, l, r) =>
+    BinOp(op, simplifyAll(l), simplifyAll(r))
+  case _ => expr
+}
+
+// 15.15.1 - This is bad, because the catch-all case is first and will always catch
+def simplifyBad(expr: Expr): Expr = expr match {
+  case UnOp(op, e) => UnOp(op, simplifyBad(e))
+  case UnOp("-", UnOp("-", e)) => e
+}
