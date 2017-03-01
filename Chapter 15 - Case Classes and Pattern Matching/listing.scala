@@ -178,3 +178,47 @@ def describe(e: Expr): String = (e: @unchecked) match {
   case Number(_) => "a number"
   case Var(_) => "a variable"
 }
+
+// 15.17.1 - Collection operations producion Optional values
+val capitals = Map("France" -> "Paris", "Japan" -> "Tokyo")
+capitals get "France" // returns Some(Paris)
+capitals get "North Pole" // returns None
+
+// 15.17.2 - Pattern match taking optional values apart
+def show(x: Option[String]) = x match {
+  case Some(s) => s
+  case None => "?"
+}
+
+// 15.17 - Defining multiple variables with one assignment
+val myTuple = (123, "abc")
+val (number, string) = myTuple // results in number: Int = 123 and string: String = "abc"
+
+// 15.17.3 - Deconstructing case classes
+val exp = new BinOp("*", Number(5), Number(1))
+val BinOp(op, left, right) = exp // results in three variables
+
+// 15.17.4 - Sequence of case classes are general function literals!
+val withDefault: Option[Int] => Int = {
+  case Some(x) => x
+  case None => 0
+}
+
+// 15.17.5 - A partial function that should return the second element of a list
+val second: List[Int] => Int = {
+  case x :: y :: _ => y // But it gives warnings, because it isn't exhaustive
+}
+
+// 15.17.6 -  We need to specify that this is a partial function, and not the entire
+//            scope of functions from List[Int] => Int
+val second: PartialFunction[List[Int], Int] = {
+  case x :: y :: _ => y
+}
+
+// 15.18 - A for expression with a tuple pattern
+for ((country, city) <- capitals)
+  println("The capital of " + country + " is " + city)
+
+// 15.19 - Picking elements of a list that match a pattern
+val results = List(Some("apple"), None, Some("orange"))
+for (Some(fruit) <- results) println(fruit)

@@ -164,3 +164,44 @@ That works, but looks really sloppy and is not ideal. A more lightweight alterna
 is to use (@unchecked) annotation to the selector as in 15.16.3
 
  == 15.6 ==
+
+Scala has a standard type named Option for optional values. Such a value can be two
+forms: Some(x), where x is the actual value, or None, which is a missing value.
+The most common way to take optional values apart is through a pattern match, as
+in 15.17.2.
+
+Option is frequently used in Scala, and is equivalentish to Java's null value. Scala's
+None is way better because you don't need to worry about instances when null is a
+valid variable, or else you're gonna get NullPointerException'd at runtime. Scala
+encourages the use of Option to indicate an optional value, and offers several advantages
+to Java's null. First, it is obvious to readers of code that a variable of type
+Option[String] is an optional String which may sometimes be null. Secondly, not
+checking for null when something may be null becomes a type error; if a variable is
+type Option[String] and you try to use it as a String, your Scala program will not
+compile.
+
+ == 15.7 ==
+
+So now we see that pattern matching is awesome in match expressions, but we can also
+use it outside of those. In 15.17, we deconstruct a tuple and assign each of its parts
+to its own variable. This construct is quite useful when working with case classes,
+as shown in 15.17.3
+
+A sequence of cases (alternatives) in curly braces can be used anywhere a function
+literal can be used. A case sequence is more or less a function literal, only more
+general. Instead of having a single entry point and list of parameters, a case sequence
+has multiple entry points, each with their own list of parameters.
+
+The body of 15.17.4 has two cases, the first matching a Some and the second a None.
+Another generalization similar to this worth nothing, a sequence of cases gives you
+a partial function. If you apply such a function on a value it does not support, it
+will generate a run-time exception. For example, 15.17.5, and the fixed version in
+15.17.6.
+
+You can also use patterns in for expressions, as in 15.18. In this example, the match
+against it can never fail. Indeed, capitals yields a sequence of pairs, so you can
+be sure that every generated pair can be matched against a pair pattern. 15.19 shows
+that you can pick and prune elements from a list by using a pattern that does not match
+all elements.
+
+ == 15.8 ==
