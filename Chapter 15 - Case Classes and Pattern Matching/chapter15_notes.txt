@@ -142,3 +142,25 @@ rules, otherwise the catch-all would be run in favor of the more specific rules.
 15.15.1 shows an example of this.
 
  == 15.5 ==
+
+A pattern match must cover all possible cases, and this can be lazily done by adding
+a default case at the end. But what if no default behavior is sensible? You can force
+the compiler to intervene and detect missing combinations of patterns in a match
+expression.
+
+A method to do this is to make the superclass of your case classes 'sealed'. A sealed
+class cannot have any new subclasses added except the ones in the same file, and
+pattern matching only worries about defined subclasses. If you match against case classes
+that inherit from a sealed class, the compiler flags missing combinations of
+patterns with a warning message.
+
+If you write a hierarchy of classes intended to be pattern matched, you should consider
+sealing them. Programmers using your class hierarchy will feel confident in pattern
+matching against it, like in 15.16. If, for instance, you have leftovers in your
+pattern matching of a sealed class and they are intentional, you can do something
+like 15.16.2 and use a wildcard that will never be reached.
+
+That works, but looks really sloppy and is not ideal. A more lightweight alternative
+is to use (@unchecked) annotation to the selector as in 15.16.3
+
+ == 15.6 ==

@@ -151,3 +151,30 @@ def simplifyBad(expr: Expr): Expr = expr match {
   case UnOp(op, e) => UnOp(op, simplifyBad(e))
   case UnOp("-", UnOp("-", e)) => e
 }
+
+// 15.16 - A sealed hierarchy of case classes
+sealed abstract class Expr
+case class Var(name: String) extends Expr
+case class Number(num: Double) extends Expr
+case class UnOp(operator: String, arg: Expr) extends Expr
+case class BinOp(operator: String,
+                 left: Expr, right: Expr) extends Expr
+
+// 15.16.1 - Compiler warning because there are missing cases
+def describe(e: Expr): String = e match {
+  case Number(_) => "a number"
+  case Var(_) => "a variable"
+}
+
+// 15.16.2 - Compiler is cool with this
+def describe(e: Expr): String = e match {
+  case Number(_) => "a number"
+  case Var(_) => "a variable"
+  case _ => throw new RuntimeException // Should never happen, but stops compiler
+}
+
+// 15.16.3 - This is prettier
+def describe(e: Expr): String = (e: @unchecked) match {
+  case Number(_) => "a number"
+  case Var(_) => "a variable"
+}
