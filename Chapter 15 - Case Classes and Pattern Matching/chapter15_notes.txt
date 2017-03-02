@@ -205,3 +205,6 @@ that you can pick and prune elements from a list by using a pattern that does no
 all elements.
 
  == 15.8 ==
+
+Now let's put all our thinking together to make a giant example of how pattern matching
+is not only powerful, but neat.

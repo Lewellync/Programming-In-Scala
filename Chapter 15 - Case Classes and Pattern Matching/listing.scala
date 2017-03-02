@@ -221,4 +221,4 @@ for ((country, city) <- capitals)
 
 // 15.19 - Picking elements of a list that match a pattern
 val results = List(Some("apple"), None, Some("orange"))
-for (Some(fruit) <- results) println(fruit)
+for (Some(fruit) <- results) println
