@@ -1,0 +1,41 @@
+Lists are dope as hell, and pretty much magic. Probably the most commonly used data
+structure in Scala, and this chapter will go into them in detail.
+
+== 16.1 List Literals ==
+
+Lists contains elements and are declared by stuff like List('a', 'b', 'c'). You knew
+this already though. Lists are similar to arrays, but there are two important differences.
+Lists are immutable; elements of a list cannot be changed by assignment. Second, lists
+have a recursive structure (like linked lists) whereas arrays are flat.
+
+== 16.2 The List Type ==
+
+Like arrays, list are homogeneous; the elements of a list all have the same type.
+The type of a list that has elements of type T is List[T]. The list type in Scala
+is covariant; for each pair of types S and T, if S is a subtype of T, then List[S]
+is a subtype of List[T]. For example, List[String] is a subtype of List[Object].
+
+Note that the empty list has type List[Nothing]. Nothing is the bottom of Scala's
+class hierarchy, and is a subtype of every other Scala type. Because lists are covariant,
+it follows that List[Nothing] is a subtype of List[T] for any type T.
+
+== 16.3 Constructing Lists ==
+
+All lists are built from two building b1locks:
+  Nil
+  :: (cons)
+
+Nil represents an empty list. The infix operator :: expresses list extension at the
+front. That is to say, x :: xs represents a list whose first element x is followed
+by the elements of list xs.
+
+== 16.4 Basic Operations on Lists ==
+
+All operations on lists can be expressed in terms of the following three:
+  head      returns the first element of a list
+  tail      returns a list consisting of all elements except the first
+  isEmpty   returns true if the list is empty
+
+These operations are defined as methods of class List.
+
+== 16.5 List Patterns ==
