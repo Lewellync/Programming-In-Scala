@@ -40,3 +40,40 @@ def isort(xs: List[Int]): List[Int] =
 def insert(x: Int, xs: List[Int]): List[Int] =
   if (xs.isEmpty || x <= xs.head) x :: xs
   else xs.head :: insert(x, xs.tail)
+
+// 16.5.1 - An example of pattern matching all elements of a lists
+val List(a, b, c) = fruit
+
+// 16.5.2 - Pattern matching an unknown sized list with at least two elements
+val a :: b :: rest = fruit
+
+// 16.5.3 - Insertion sort with pattern matching.
+def isort(xs: List[Int]): List[Int] = xs match {
+  case List()   => List()
+  case x :: xs1 => insert(x, isort(xs1))
+}
+
+def insert(x: Int, xs: List[Int]): List[Int] = xs match {
+  case List()   => List(x)
+  case y :: ys  => if (x <= y) x :: xs
+                   else y :: insert(x, ys)
+}
+
+// 16.6.1
+List(1,2) ::: List(3,4,5)
+List() ::: List(1,2,3)
+List(1,2,3) ::: List(4)
+
+// 16.6.2 - List concatenation implemented on your own
+def append[T](xs: List[T], ys: List[T]): List[T] = xs match {
+  case List() => ys
+  case x :: xs1 => x ::: append(xs1, ys)
+}
+
+// 16.6.3 - Length of List
+List(1, 2, 3).length
+
+// 16.6.4 - Init and Last
+val abcde = List('a','b','c','d','e')
+abcde.last // 'e'
+abcde.init // List('a','b','c','d')

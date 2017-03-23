@@ -39,3 +39,32 @@ All operations on lists can be expressed in terms of the following three:
 These operations are defined as methods of class List.
 
 == 16.5 List Patterns ==
+
+Lists can also be taken apart using pattern matching. List patterns correspond one
+by one to list expressions. You can either match all elements of a list using a pattern
+of the form List(...) or you can take lists apart bit by bit using patterns composed
+from :: and Nil.
+
+Taking apart lists with patterns is an alternative to taking them apart with the
+basic methods head, tail and isEmpty. 16.5.3 shows insertion sort done with pattern
+matching.
+
+== 16.6 First-Order Methods on Class List ==
+
+A method is first-order if it does not take any functions as arguments. Fun!
+
+Concatenating lists is simlar to the cons operator, and is written like ':::'.
+This takes two lists as operands, and the result of xs ::: ys is a new list that
+contains all elements of xs followed by ys.
+
+Concatenation is implemented as a method in class List. It would be possible to implement
+your own by hand, using pattern matching on lists as in 16.6.2.
+
+Getting the length of a list is easy, but an O(n) operation. List.isEmpty will always
+be better than calling List.length == 0.
+
+Accessing the beginning and end of a list can be done with head and tail. List.last
+will return the last element of a non-empty list, and List.init returns a list containing
+all elements except the last one. Both last and init are O(n). Because of this, when
+using lists, it is a good idea to organize data so that most accesses are at the
+head of the list, rather than the last element.
