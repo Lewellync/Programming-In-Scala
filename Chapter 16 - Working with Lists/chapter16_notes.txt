@@ -68,3 +68,52 @@ will return the last element of a non-empty list, and List.init returns a list c
 all elements except the last one. Both last and init are O(n). Because of this, when
 using lists, it is a good idea to organize data so that most accesses are at the
 head of the list, rather than the last element.
+
+Like all list operations, reverse returns a new list rather than changing the one it
+operates on. This can be helpful if you find yourself often accessing the last element
+of a list, as it may be more useful to use the reverse instead. The reverse, init,
+and last operations satisfy some laws that can be used for reasoning about computations
+and for simplifying programs
+
+  1. reverse is its own inverse
+    xs.reverse.reverse equals xs
+
+  2. reverse turns init to tail and last to head, except that the elements are reversed
+    xs.reverse.init = xs.tail.reverse
+    xs.reverse.tail = xs.init.reverse
+    xs.reverse.head = xs.last
+    xs.reverse.last = xs.last
+
+Reverse can also be implemented using concatenation (:::) just like append was.
+The implementation in 16.6.6 is incredibly inefficient, and we'll figure out a better
+version later on.
+
+Prefix and suffix operations are also dope: drop, take and splitAt. The drop and
+take opeartions generalize tail and init in that they return arbitrary prefixes
+or suffixes of a list.
+
+splitAt returns a tuple2 of lists, dividing the original list at the given index.
+
+Random element selection is supported through the apply method, but is a less common
+operation for lists than it is for arrays. As for all other types, apply is implicitly
+inserted when an object appears in the function position in a method call.
+
+Flattening lists is pretty interesting. Do you have multiple lists? Use flatten
+and you can compact them into a single list. It can only be applied to lists whose
+elements are all lists.
+
+Zipping and unzipping is also nifty, and useful for complex functional programming
+solutions. Zip takes two lists and forms a list of pairs. If two lists are different
+lengths, any unmatched elements are dropped. Unzipping takes a tuple of lists and
+creates the original two seperate lists.
+
+A useful case is to zip a list with its index (16.6.10).
+
+toString returns the canonical string representation of a list. If you want a different
+representation, use mkString.
+
+mkString has a bunch of things to make stuff look pretty, and is formatted by
+abcde mkString(pre, sep, post) where pre and post come after each element and sep
+is what seperates each element. I expands to:
+
+  pre + xs(0) + sep + ... + sep + xs(xs.length-1) + post

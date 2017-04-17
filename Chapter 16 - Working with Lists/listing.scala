@@ -77,3 +77,35 @@ List(1, 2, 3).length
 val abcde = List('a','b','c','d','e')
 abcde.last // 'e'
 abcde.init // List('a','b','c','d')
+
+// 16.6.5 - Reverse
+abcde.reverse
+
+// 16.6.6 - List reversal with concatenation
+def reverese[T](xs: List[T]): List[T] = xs match {
+  case List() => xs
+  case x :: xs1 => reverse(xs1) ::: List(x)
+}
+
+// 16.6.7 - Drop and take
+abcde take 2
+abcde drop 2
+abcde splitAt 2 // = List(a, b) and List(c, d, e)
+
+// 16.6.8 - Apply, these are equivalent
+abcde apply 2
+abcde(2)
+(abcde drop 2).head
+
+// 16.6.9 - Flatten
+List(List(1, 2), List(), List(3), List(4,5)).flatten
+
+// 16.6.10 - Zip and unzip
+abcde.indices zip abcde // = Vector((0,a),(1,b),(2,c),(3,d),(4,e))
+val zipped = abcde.zipWithIndex // Same as above
+zipped.unzip
+
+// 16.6.11 - Presenting lists with mkString and toString
+abcde.toString // = List(a,b,c,d,e)
+abcde.mkString // = abcde
+abcde.mkString("[", ",", "]")
