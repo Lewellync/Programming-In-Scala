@@ -117,3 +117,29 @@ abcde mkString(pre, sep, post) where pre and post come after each element and se
 is what seperates each element. I expands to:
 
   pre + xs(0) + sep + ... + sep + xs(xs.length-1) + post
+
+mkString also has two overloaded variants. The first takes a seperator argument and
+applies mkString with nothing as pre and post. mkString with no argument is the same
+as mkString with a "" seperator
+
+  xs mkString sep = xs mkString ("", sep, "")
+  xs mkString = xs mkString ""
+
+There are also variants of the mkString methods called addString which append the constructed
+string to a StringBuilder object, rather than returning them as a result.
+
+To convert data between the flat world of arrays and the recursive world of lists,
+you can use method toArray in class List and toList in class Array
+
+copyToArray copies list elements to successive array positions within some destination
+array. The operation in 16.6.12 copies all elements of the list xs to the array arr,
+beginning with the position 'start' You must ensure that the destination array arr is
+large enough to hold the list in full.
+
+Finally if you need to access list elements via an iterator, you can use the iterator
+method to create one.
+
+The insertion sort presented earlier (16.4.1) is concise to write, but is not very efficient
+with average complexity proportional to the square of the length. Let's do merge sort
+with currying and divide and conquer. Currying allows us to generalize the less than
+method, so it can be implemented with ints, strings, etc.
