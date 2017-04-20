@@ -143,3 +143,23 @@ The insertion sort presented earlier (16.4.1) is concise to write, but is not ve
 with average complexity proportional to the square of the length. Let's do merge sort
 with currying and divide and conquer. Currying allows us to generalize the less than
 method, so it can be implemented with ints, strings, etc.
+
+  == 16.7 == Higher-order methods on class List ==
+
+So after much regular list functions, we get to the fancy stuff that allows us to transform
+map, verify properties and satisfy criterion with higher-order functions on lists.
+
+The operation xs map f takes as operands a list xs and a function f, where f maps
+some element of list xs to a resultant.
+
+The flatMap operation is similar to map, but it takes a function returning a list
+of elements as its right operand. It applies the function to each list element and
+returns the concatenation of all function results.
+
+In 16.7.1, you see map returns a list of lists while flatMap returns a single list
+in which all element lists are concatenated. In 16.7.2, the map expression generates
+a list of tuples (i, j) where j < i, and the outer flatMap generates this list for each
+i between 1 and 5.
+
+Third map-like operation is foreach, which takes a procedure (function with result
+type unit) as right operand.

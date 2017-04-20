@@ -146,3 +146,22 @@ def msort[T](less: (T, T) => Boolean)(xs: List[T]): List[T] = {
 val intSort = msort((x: Int, y: Int) => x < y) _ // Underscore stands for a missing
                                                  // argument list
 val reverseIntSort = msort((x: Int, y: Int) => x > y) _
+
+// 16.7.1 - map, flatMap and foreach
+List(1, 2, 3) map (_ + 1)
+val words = List("the", "quick", "brown", "fox")
+words map (_.length)
+words map (_.toList.reverse.mkString)
+
+words map (_.toList)  // Illustrates the difference betewween
+words flatMap (_.toList)
+
+var sum = 0
+List(1, 2, 3, 4, 5) foreach (sum += _)
+
+// 16.7.2 - Further illustrates difference between map and flatMap
+List.range(1, 5) flatmap (
+  i => List.range(1, i) map (j => (i, j))
+)
+
+for (i <- List.range(1, 5); j <- List.range(1, i)) yield (i, j) // Same thing
